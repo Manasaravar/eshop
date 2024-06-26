@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Login | knittingshop</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/prettyPhoto.css" rel="stylesheet">
+    <link href="/css/price-range.css" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/css/responsive.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57x57.png">
+</head><!--/head-->
+
+<body>
+<th:block th:insert="~{layouts/header.html}"/>
+
+<section id="form"><!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form"><!--login form-->
+                  <h2>Войти в личный кабинет</h2>
+                    <div th:if="${param.error}">
+                        Invalid username and password
+                    </div>
+                    <div th:if="${param.logout}">
+                        You have been logged out
+                    </div>
+                    <form th:action="@{/login}" method="post">
+                        <input type="text" placeholder="Name" name="username">
+                        <input type="password" placeholder="password" name="password">
+                        <button type="submit" class="btn btn-default">Войти</button>
+                    </form>
+                </div> <!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">или</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form"><!--sign up form-->
+                    <h2>Регистрация нового пользователя</h2>
+                    <form th:action="@{/registration}" method="post">
+                        <input type="text" placeholder="Name" name="username"/>
+                        <span th:if="${error == 'username'}"> Username некорректен или занят</span>
+                        <input type="password" placeholder="Password" name="password"/>
+                        <input type="password" placeholder="Matching Password" name="matchingPassword"/>
+                        <span th:if="${error == 'password'}">Пароли не совпадает </span>
+                        <button type="submit" class="btn btn-default">Зарегистрировать</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->
+
+
+<th:block th:insert="~{layouts/footer.html}"/>
+
+
+
+
+</body>
+</html>

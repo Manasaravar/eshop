@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Home | knittingshop</title>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/prettyPhoto.css" rel="stylesheet">
+	<link href="/css/price-range.css" rel="stylesheet">
+	<link href="/css/animate.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/responsive.css" rel="stylesheet">
+
+	<link rel="shortcut icon" href="/images/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+
+<th:block th:insert="~{layouts/header.html}"/>
+
+<section id="advertisement">
+	<div class="container">
+		<img src="/images/shop/advertisement.png" alt=""/>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+		<div class="row">
+
+			<th:block th:insert="~{layouts/categorybrands.html}"/>
+
+			<!--						<div class="shipping text-center">&lt;!&ndash;shipping&ndash;&gt;-->
+			<!--							<img src="/images/home/shipping.png" alt="" />-->
+			<!--						</div>&lt;!&ndash;/shipping&ndash;&gt;-->
+
+
+			<div class="col-sm-9 padding-right">
+				<div class="features_items"><!--features_items-->
+					<h2 class="title text-center">Товары</h2>
+					<th:block th:each="product: ${products}">
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+
+								<div class="single-products">
+
+									<div class="productinfo text-center">
+
+										<img src="/images/shop/alize_gold.png" alt="268х249"/>
+										<h2>[[${product.price}]] руб.</h2>
+										<p>[[${product.color}]]</p>
+
+										<a th:href="@{/products/addPosition}" class="btn btn-default add-to-cart">
+											<i class="fa fa-shopping-cart"></i>Add to cart</a>
+									</div>
+								</div>
+								<div class="choose">
+									<ul class="nav nav-pills nav-justified">
+
+										<li><a th:href="@{'/products/' + ${product.id}}"><i
+												class="fa fa-plus-square"></i>Детализация</a></li>
+
+										<!-- <li><a href=""><i class="fa fa-plus-square"></i>Add to compare</a></li> -->
+									</ul>
+								</div>
+							</div>
+						</div>
+					</th:block>
+
+					<ul class="pagination">
+						<li class="active"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">&raquo;</a></li>
+					</ul>
+				</div><!--features_items-->
+			</div>
+		</div>
+	</div>
+</section>
+
+<th:block th:insert="~{layouts/footer.html}"/>
+
+
+</body>
+</html>

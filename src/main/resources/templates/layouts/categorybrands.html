@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>footer</title>
+</head>
+<body>
+<th:block th:fragment="categorybrands">
+
+    <div id="categoryBrands"><!--Category&Brands-->
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <h2>Категории</h2>
+                <div class="panel-group category-products" id="accordian" >
+                    <!--category-productsr-->
+                    <div class="panel panel-default" >
+
+                        <th:block th:each="category: ${categories}">
+
+                        <div class="panel-heading" >
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordian" href="#knittingthreads" >
+                                        <span class="badge pull-right">
+                                            <i class="fa fa-plus"> </i>
+                                        </span>
+                                    [[${category.title}]]
+                                    <!-- knittingthreads -->
+                                </a>
+                            </h4>
+                        </div>
+
+                        </th:block>
+
+                        <div id="knittingthreads" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+
+                                    <li><a href="#">Хлопок </a></li>
+                                    <li><a href="#">Шерсть </a></li>
+                                    <li><a href="#">Лен</a></li>
+                                    <li><a href="#">Махер </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div><!--/category-products-->
+
+                <div class="brands_products"><!--brands_products-->
+                    <h2>Брэнды</h2>
+                    <div class="brands-name">
+                        <ul class="nav nav-pills nav-stacked" th:each="brand: ${brands}">
+                            <li><a href="#" > <span class="pull-right" ></span>[[${brand.title}]]</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--/brands_products-->
+                <div class="shipping text-center"><!--shipping-->
+                    <img src="/images/home/shipping.png" alt="" />
+                </div><!--/shipping-->
+            </div>
+        </div>
+
+    </div><!--/Category&Brands-->
+
+</th:block>
+
+</body>
+</html>

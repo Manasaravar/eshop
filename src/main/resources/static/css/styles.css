@@ -1,0 +1,102 @@
+.container {
+    width: 100%;
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #e8ca9b;
+    display: flex;
+    align-content: center;
+}
+
+.modal {
+    margin: auto;
+    width: 1200px;
+    padding-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(227, 227, 227);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+/*.table {*/
+/*    margin: auto;*/
+/*    width: 90%;*/
+/*    border-collapse: collapse;*/
+/*    text-align: center;*/
+/*}*/
+
+/*th, td {*/
+/*    border-style: solid;*/
+/*    border-width: 1px;*/
+/*    text-align: center;*/
+/*}*/
+.table {
+    width: 90%;
+    border: none;
+    margin: auto;
+}
+.table thead th {
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    background: #d8d8d8;
+    font-size: 14px;
+}
+.table thead tr th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.table thead tr th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+.table tbody td {
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+}
+.table tbody tr:nth-child(even){
+    background: #f3f3f3;
+}
+.table tbody tr td:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.table tbody tr td:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.inputText {
+    width: 80%;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 7px;
+}
+
+.form {
+    width: 90%;
+    margin: auto auto 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputSubmit {
+    width: 80%;
+    height: 40px;
+    margin-top: 25px;
+    border-radius: 7px;
+    background-color: #aa97de;
+    color: beige;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.a_button {
+    padding-left: 2px;
+    padding-right: 2px;
+    color: #1d1d1d;
+    background-color: #ffffff;
+    text-decoration: none;
+    margin-inside: 0;
+    align-items: center;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>account | knittingshop</title>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/prettyPhoto.css" rel="stylesheet">
+	<link href="/css/price-range.css" rel="stylesheet">
+	<link href="/css/animate.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/responsive.css" rel="stylesheet">
+	<!--    &lt;!&ndash;[if lt IE 9]>-->
+	<!--    <script src="js/html5shiv.js"></script>-->
+	<!--    <script src="js/respond.min.js"></script>-->
+	<!--    <![endif]&ndash;&gt;-->
+	<link rel="shortcut icon" href="/images/ico/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+<th:block th:insert="~{layouts/header.html}"/>
+
+	<section id="cart_items">
+		<div class="container">
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+				  <li><a href="index.html">Главная</a></li>
+				  <li class="active">Личный кабинет</li>
+				</ol>
+			</div><!--/breadcrums-->
+
+			<div class="step-one">
+				<h2 class="heading">Информация</h2>
+			</div>
+			<!--/checkout-options-->
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="chose_area">
+
+
+						<div class="user_info">
+
+							<div class="single_field" sec:authorize="hasRole('CLIENT')">HELLO CLIENT.</div>
+							<div class="single_field" sec:authorize="hasRole('MANAGER')">HELLO MANAGER.</div>
+							<div class="single_field" sec:authorize="hasRole('ADMIN')">HELLO ADMIN.</div>
+							<div sec:authorize="isAuthenticated()"></div>
+
+							<tr class="single_field">Имя</tr>
+							<label class="single_field_user" sec:authentication="principal.username"></label>
+							<tr class="single_field">Пароль</tr>
+							<label sec:authentication="principal.password"> </label>
+							<tr class="single_field">Email</tr>
+							<label class="single_field" sec:authentication="principal.email"></label>
+							<tr class="single_field">Телефон:</tr>
+							<label class="single_field" sec:authentication="principal.phone"></label>
+							<a class="a_button" href="/logout">Выйти</a>
+						</div>
+
+
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="chose_area">
+						<div class="user_info">
+							<div>
+								<tr class="single_field">Номер карты:</tr>
+								<label>******</label>	
+								<tr class="single_field">Срок действия:</tr>
+								<label>******</label>			
+								<tr class="single_field">Имя владельца:</tr>
+								<label>******</label>	
+								<tr class="single_field">CVC code:</tr>
+								<label>******</label>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="review-payment">
+				<h2>Мои покупки</h2>
+			</div>
+
+			<div class="table-responsive cart_info">
+				<table class="table table-condensed">
+					<thead>
+						<tr class="cart_menu">
+							<td class="image">Товар</td>
+							<td class="description"></td>
+							<td class="price">Цена</td>
+							<td class="quantity">Количество</td>
+							<td class="total">Стоимость</td>
+							<td></td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="cart_product">
+								<a href=""><img src="" alt="Товар №1"></a>
+							</td>
+							<td class="cart_description">
+								<h4><a href="">Описание</a></h4>
+								<p> ID: 1089772</p>
+							</td>
+							<td class="cart_price">
+								<p>ХХ руб</p>
+							</td>
+							<td class="cart_quantity">
+								<p>XX шт</p>
+							</td>
+							<td class="cart_total">
+								<p class="cart_total_price">ХХ руб</p>
+							</td>
+							<td class="cart_delete">
+								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+							</td>
+						</tr>
+
+						<tr>
+							<td colspan="4">&nbsp;</td>
+							<td colspan="2">
+								<table class="table table-condensed total-result">
+								
+										<td>Итого</td>
+										<td><span>ХХ руб</span></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+	</section> <!--/#cart_items-->
+
+
+
+<th:block th:insert="~{layouts/footer.html}"/>
+	
+
+</body>
+</html>

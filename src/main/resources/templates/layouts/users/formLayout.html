@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="usersFormLayout(user)">
+
+        <form class = "form" th:action="@{${user.username == null ? '/admin/users' : '/admin/users/' + user.id}}"
+              th:object="${user}" method="post">
+
+            <label>Name</label>
+            <input type="text" th:field="*{username}" placeholder="Name">
+            <label>Password</label>
+            <input type="password" placeholder="password" th:field="*{password}">
+            <label>Email</label>
+            <input type="email" placeholder="email" th:field="*{email}">
+            <label>Phone</label>
+            <input type="text" placeholder="phone" th:field="*{phone}">
+
+            <input type="submit" value="Add User">
+        </form>
+
+</th:block>
+</body>
+</html>

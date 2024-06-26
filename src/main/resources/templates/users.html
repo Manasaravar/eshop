@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<a class="a_button" href="/404">404</a>
+<a class="a_button" href="/admin/users">Users</a>
+<a class="a_button" href="/index">Главная</a>
+<a class="a_button" href="/login">Login</a>
+
+
+<div class="container">
+        <div class="modal">
+            <th:block th:insert="~{/layouts/users/formLayout.html::usersFormLayout(${user})}"/>
+
+            <th:block th:insert="~{/layouts/users/tableLayout.html::usersTableLayout(${users})}"/>
+        </div>
+    </div>
+</body>
+</html>

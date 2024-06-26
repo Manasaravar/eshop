@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+	  xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Home | knittingshop</title>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/css/prettyPhoto.css" rel="stylesheet">
+	<link href="/css/price-range.css" rel="stylesheet">
+	<link href="/css/animate.css" rel="stylesheet">
+	<link href="/css/main.css" rel="stylesheet">
+	<link href="/css/responsive.css" rel="stylesheet">
+	<!--    &lt;!&ndash;[if lt IE 9]>-->
+	<!--    <script src="js/html5shiv.js"></script>-->
+	<!--    <script src="js/respond.min.js"></script>-->
+	<!--    <![endif]&ndash;&gt;-->
+	<link rel="shortcut icon" href="/images/ico/favicon.ico">
+	<!--    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">-->
+	<!--    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">-->
+	<!--    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">-->
+	<!--    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">-->
+</head><!--/head-->
+
+<body>
+
+<th:block th:insert="~{layouts/header.html}"/>
+
+
+
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+				<li><a href="#">Главная</a></li>
+				<li class="active">Корзина покупок</li>
+			</ol>
+			<div class="single_field" sec:authorize="hasRole('CLIENT')"></div>
+			<div sec:authorize="isAuthenticated()"></div>
+			<tr class="single_field">Клиент: </tr>
+			<label class="single_field_user" sec:authentication="principal.username"></label>
+		</div>
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+
+				<tr class="cart_menu">
+					<td class="image">Товар</td>
+					<td class="description"></td>
+					<td class="price">Цена</td>
+					<td class="quantity">Количество</td>
+					<td class="total">Итого</td>
+					<td></td>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td class="cart_product">
+						<a href=""><img src="/images/cart/alize_gold.png" alt="Фото товара"></a>
+					</td>
+					<td class="cart_description">
+						<h4><a href="">Наименование товара</a></h4>
+						<p>Описание товара ID: 1089772</p>
+					</td>
+					<td class="cart_price">
+						<p>Цена</p>
+					</td>
+					<td class="cart_quantity">
+						<div class="cart_quantity_button">
+							<a class="cart_quantity_up" href=""> + </a>
+							<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off"
+								   size="2">
+							<a class="cart_quantity_down" href=""> - </a>
+						</div>
+					</td>
+					<td class="cart_total">
+						<p class="cart_total_price">Стоимость</p>
+					</td>
+					<td class="cart_delete">
+						<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+					</td>
+				</tr>
+
+				</tbody>
+				<th:block th:object="${order}">
+				<tr class="cart_menu_final">
+					<td colspan="3">Итого</td>
+					<td class="quantity">[[${order.totalQuantity}]]</td>
+					<td class="total">[[${order.totalPrice}]]</td>
+					<td></td>
+				</tr>
+				</th:block>
+			</table>
+		</div>
+	</div>
+</section> <!--/#cart_items-->
+
+<section id="do_action">
+	<div class="container">
+		<div class="heading">
+			<h3>Введите данные для доставки и оплаты:</h3>
+
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="chose_area">
+
+					<ul class="user_info">
+						<li class="single_field">Город:</li>
+						<input type="text" name="city">
+						<li class="single_field">Улица:</li>
+						<input type="text" name="street">
+						<li class="single_field">Дом:</li>
+						<input type="text" name="building">
+						<li class="single_field zip-field">Примечание:</li>
+						<input type="text" name="note">
+					</ul>
+					<a class="btn btn-default check_out" href="">Продолжить</a>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="chose_area">
+					<div class="user_info">
+						<ul>
+							<li class="single_field">Номер карты:</li>
+							<input type="text" name="numberCard">
+							<li class="single_field">Срок действия:</li>
+							<input type="text" name="dateOfValid">
+							<li class="single_field zip-field">Имя владельца:</li>
+							<input type="text" name="cardHolderName">
+							<li class="single_field zip-field">CVC code:</li>
+							<input type="text" name="cvcCode">
+						</ul>
+						<a class="btn btn-default check_out" href="">Оплатить</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section><!--/#do_action-->
+
+<th:block th:insert="~{layouts/footer.html}"/>
+
+
+<!--    <script src="js/jquery.js"></script>-->
+<!--	<script src="js/bootstrap.min.js"></script>-->
+<!--	<script src="js/jquery.scrollUp.min.js"></script>-->
+<!--    <script src="js/jquery.prettyPhoto.js"></script>-->
+<!--    <script src="js/main.js"></script>-->
+</body>
+</html>

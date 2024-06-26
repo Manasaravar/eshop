@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:fragment="usersTableLayout(users)">
+    <table class="table">
+        <thead>
+        <th>id</th>
+        <th>Name</th>
+<!--        <th>Password</th>-->
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>edit</th>
+        <th>delete</th>
+        </thead>
+        <tbody>
+        <th:block th:each="user : ${users}">
+            <tr>
+                <td>[[${user.id}]]</td>
+                <td>[[${user.username}]]</td>
+<!--                <td>[[${user.password}]]</td>-->
+                <td>[[${user.email}]]</td>
+                <td>[[${user.phone}]]</td>
+                <td>[[${user.role}]]</td>
+
+                <td>
+                <a class="a_button" th:href="@{'/admin/users/' + ${user.id}}">edit</a>
+                </td>
+
+                <td>
+                    <form method="post" th:action="@{'/admin/users/delete/' + ${user.id}}">
+                        <input class="a_button" type="submit" value="delete">
+                    </form>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</th:block>
+</body>
+</html>
