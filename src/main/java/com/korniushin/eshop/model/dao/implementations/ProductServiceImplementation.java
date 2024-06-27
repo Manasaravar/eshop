@@ -4,6 +4,7 @@ import com.korniushin.eshop.model.dao.interfaces.ProductService;
 import com.korniushin.eshop.model.dao.repositories.ProductRepository;
 import com.korniushin.eshop.model.entities.Product;
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,5 +58,15 @@ public class ProductServiceImplementation implements ProductService {
     @Override
     public Product findProductById(Long ProductId) {
         return productRepository.findProductById(ProductId);
+    }
+
+
+    //ПОИСК
+    @Override
+      public List<Product> listAll(String keyword) {
+        if (keyword != null) {
+            return productRepository.search(keyword);
+        }
+        return productRepository.findAll();
     }
 }

@@ -50,7 +50,7 @@ public class User implements UserDetails {
                 .updated(LocalDateTime.now())
                 .totalPrice(0.0)
                 .totalQuantity(0)
-                .products(new HashSet<>())
+                .productsPositions(new HashSet<>())
                 .build();
         orders.add(order);
     }

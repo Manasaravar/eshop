@@ -7,6 +7,7 @@ import com.korniushin.eshop.model.dao.interfaces.*;
 import com.korniushin.eshop.model.entities.*;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,13 +35,21 @@ public class ProductController {
 
 
     @GetMapping
-    public String getProducts(Model model) {
+    public String getProducts(Model model, @Param("keyword") String keyword) {
 
         List<Product> products = productService.all();
 
         model.addAttribute("products", products);
         model.addAttribute("categories", getCategories());
         model.addAttribute("brands", getBrands());
+
+
+        //поиск
+
+        List<Product> listProducts = productService.listAll(keyword);
+        model.addAttribute("listProducts", listProducts);
+        model.addAttribute("keyword", keyword);
+        // поиск
 
         return "products";
     }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @GetMapping
-    public String index() {return "index";}
+    public String index() {return "redirect:/index";}
 
     @GetMapping("/login")
     public String login() {
@@ -25,6 +25,7 @@ public class MainController {
     public String errorPage() {
         return "404";
     }
+
 
 
 

@@ -36,14 +36,14 @@ public class WebSecurityConfig   {
                 .authorizeHttpRequests(request ->
                         request
 
-                                .requestMatchers("/", "/products/**", "/products", "/productdetails/**", "/index", "/login", "/contacts", "/404").permitAll()
+                                .requestMatchers("/", "/products/**", "/products", "/productdetails/**", "/index", "/login", "/contacts", "/404", "/cart/add").permitAll()
                                 .requestMatchers("/registration").hasRole("ANONYMOUS")
 //                                .requestMatchers(new AntPathRequestMatcher("/admin/users", "GET")).authenticated()
 //                                .requestMatchers(new AntPathRequestMatcher("/admin/users", "POST")).hasAnyRole("MANAGER", "ADMIN")
                                 //.requestMatchers("/logout", "/admin/users", "/account").authenticated()
                                 .requestMatchers("/admin/users").hasAnyRole("MANAGER", "ADMIN")
                                 .requestMatchers("/admin/users/delete/**").hasRole("ADMIN")
-                                .requestMatchers("/cart", "/cart/**").hasRole("CLIENT")
+                               // .requestMatchers("/cart", "/cart/**").hasRole("CLIENT")
                                 .anyRequest().authenticated()
 
                 )
@@ -66,7 +66,7 @@ public class WebSecurityConfig   {
     public WebSecurityCustomizer webSecurityCustomizer() {
         return web -> web
                 .ignoring()
-                .requestMatchers("/css/*.css", "/fonts/**", "/images/**");
+                .requestMatchers("/css/*.css", "/fonts/**", "/images/**", "/*.js");
     }
 
     @Bean

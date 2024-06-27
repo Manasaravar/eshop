@@ -57,8 +57,16 @@
 										<h2>[[${product.price}]] руб.</h2>
 										<p>[[${product.color}]]</p>
 
-										<a th:href="@{/products/addPosition}" class="btn btn-default add-to-cart">
-											<i class="fa fa-shopping-cart"></i>Add to cart</a>
+<!--										<form method="post" th:action="@{/cart/add/}">-->
+<!--											<input class="a_button" type="text" value="quantity">-->
+<!--										</form>	-->
+
+											<button th:data-productId="${product.id}" th:onclick="addButtonHandler(this.getAttribute('data-productId'))">
+												Add to cart
+											</button>
+
+<!--										<a th:href="@{/products/addPosition}" class="btn btn-default add-to-cart">-->
+<!--											<i class="fa fa-shopping-cart"></i>Add to cart</a>-->
 									</div>
 								</div>
 								<div class="choose">
@@ -87,6 +95,15 @@
 </section>
 
 <th:block th:insert="~{layouts/footer.html}"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js">
+
+</script>
+
+<script src="/productDetails.js">
+
+</script>
+
 
 
 </body>

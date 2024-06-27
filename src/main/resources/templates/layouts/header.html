@@ -70,7 +70,7 @@
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="/products">Товары</a></li>
 <!--                                        <li><a href="/productdetails">Детализация товара</a></li>-->
-                                        <li><a href="cart.html">Корзина</a></li>
+                                        <li><a href="/cart">Корзина</a></li>
                                         <li><a href="/login">Регистрация</a></li>
                                     </ul>
                                 </li>
@@ -80,9 +80,16 @@
                         </div>
                     </div>
                     <div class="col-sm-3">
-                        <div class="search_box pull-right">
-                            <input type="text" placeholder="Поиск"/>
-                        </div>
+<!--                        <div class="search_box pull-right">-->
+<!--                            <input type="text" placeholder="Поиск"/>-->
+
+                            <form th:action="@{/}" >
+                                <input type="text" placeholder="Поиск" name="keyword" id="keyword" size="25" th:value="${keyword}" required />
+                                <input type="submit" value="Найти" />
+                                <input type="button" value="Очистить" id="btnClear" onclick="clearSearch()" />
+                            </form>
+
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -90,5 +97,12 @@
     </header><!--/header-->
 
 </th:block>
+
+    <script type="text/javascript">
+        function clearSearch() {
+            window.location = "[[@{/}]]";
+        }
+    </script>
+
 </body>
 </html>

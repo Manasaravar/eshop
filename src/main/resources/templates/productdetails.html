@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>Home | knittingshop</title>
+	<title>productDetails | knittingshop</title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/font-awesome.min.css" rel="stylesheet">
 	<link href="/css/prettyPhoto.css" rel="stylesheet">
@@ -54,18 +54,18 @@
 										<span>[[${product.price}]] руб.</span>
 										<label>Количество: </label>
 
+							<input type="number" id = "position" value=" "/>
 
-										<input type="text" value=" "/>
-										<button type="button" class="btn btn-fefault cart" >
-											<i class="fa fa-shopping-cart"></i>
-											Add to cart
-										</button>
-
+											<button th:data-productId="${product.id}"
+													th:onclick="addPositionButtonHandler(this.getAttribute('data-productId'))">
+												Add to cart
+											</button>
+<!--										<button type="button" class="btn btn-fefault cart" >-->
+<!--											<i class="fa fa-shopping-cart"></i>-->
+<!--											Add to cart-->
+<!--										</button>-->
 								</span>
-
-
-
-								<p><b>Категория: </b>[[${product.category}]]</p>
+			<p><b>Категория: </b>[[${product.category}]]</p>
 								<p><b>Состав: </b> [[${product.composition}]]</p>
 							</div><!--/product-information-->
 						</th:block>
@@ -108,6 +108,14 @@
 
 
 <th:block th:insert="~{layouts/footer.html}"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js">
+
+</script>
+
+<script src="/productDetails.js">
+
+</script>
 
 <!--  -->
 <!--    <script src="js/jquery.js"></script>-->

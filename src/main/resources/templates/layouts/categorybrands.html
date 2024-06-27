@@ -19,7 +19,7 @@
 
                         <div class="panel-heading" >
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordian" href="#knittingthreads" >
+                                <a data-toggle="collapse" data-parent="#accordian" th:href="@{'/category/' + ${category.id}}" >
                                         <span class="badge pull-right">
                                             <i class="fa fa-plus"> </i>
                                         </span>
@@ -31,27 +31,30 @@
 
                         </th:block>
 
-                        <div id="knittingthreads" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <ul>
+<!--                        <div id="knittingthreads" class="panel-collapse collapse">-->
+<!--                            <div class="panel-body">-->
+<!--                                <ul>-->
 
-                                    <li><a href="#">Хлопок </a></li>
-                                    <li><a href="#">Шерсть </a></li>
-                                    <li><a href="#">Лен</a></li>
-                                    <li><a href="#">Махер </a></li>
-                                </ul>
-                            </div>
-                        </div>
+<!--                                    <li><a href="#">Хлопок </a></li>-->
+<!--                                    <li><a href="#">Шерсть </a></li>-->
+<!--                                    <li><a href="#">Лен</a></li>-->
+<!--                                    <li><a href="#">Махер </a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
-
-
                 </div><!--/category-products-->
 
                 <div class="brands_products"><!--brands_products-->
                     <h2>Брэнды</h2>
                     <div class="brands-name">
                         <ul class="nav nav-pills nav-stacked" th:each="brand: ${brands}">
-                            <li><a href="#" > <span class="pull-right" ></span>[[${brand.title}]]</a></li>
+                            <li>
+                                <a href="#" >
+                                    <span class="pull-right" ></span>
+                                    [[${brand.title}]]
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

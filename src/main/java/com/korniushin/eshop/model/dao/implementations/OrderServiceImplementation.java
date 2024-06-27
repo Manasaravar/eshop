@@ -5,6 +5,7 @@ import com.korniushin.eshop.model.dao.repositories.OrderRepository;
 
 import com.korniushin.eshop.model.dao.repositories.ProductRepository;
 import com.korniushin.eshop.model.entities.Order;
+import com.korniushin.eshop.model.entities.OrderPosition;
 import com.korniushin.eshop.model.entities.OrderStatus;
 import com.korniushin.eshop.model.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,31 +64,25 @@ public class OrderServiceImplementation implements OrderService {
                 .updated(LocalDateTime.now())
                 .totalPrice(0.0)
                 .totalQuantity(0)
-                .products(new HashSet<>())
+                .productsPositions(new HashSet<>())
                 .build();
         orderRepository.save(orderCart);
     }
 
     @Override
     public void addPosition(Order order, Product product, Integer quantity) {
-        final Product productToOrder = Product.builder()
-                .color(product.getColor())
-                .brand(product.getBrand())
-                .price(product.getPrice())
-                .composition(product.getComposition())
-                .unit(product.getUnit())
-                .article(product.getArticle())
-                .category(product.getCategory())
+        OrderPosition orderPosition = OrderPosition.builder()
+                .orderQuantity(quantity)
                 .order(order)
-                .quantity(quantity)
+                .product(product)
                 .build();
-        order.getProducts().add(productToOrder);
+        order.getProductsPositions().add(orderPosition);
         order.setUpdated(LocalDateTime.now());
         orderRepository.save(order);
 
-        productToOrder.setQuantity(productToOrder.getQuantity() - quantity);
+        product.setQuantity(product.getQuantity() - quantity);
 
-        productRepository.save(productToOrder);
+        productRepository.save(product);
     }
 
     @Override

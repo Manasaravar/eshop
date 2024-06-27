@@ -64,4 +64,4 @@ alter table if exists orders add constraint orders_user_id foreign key (user_id)
 alter table if exists products add constraint products_brand_id foreign key (brand_id) references brands;
 alter table if exists products add constraint products_category_id foreign key (category_id) references categories;
 alter table if exists products add constraint products_composition_id foreign key (composition_id) references compositions;
-alter table if exists products add constraint products_order_id foreign key (order_id) references orders;
+-- alter table if exists products add constraint products_order_id foreign key (order_id) references orders;

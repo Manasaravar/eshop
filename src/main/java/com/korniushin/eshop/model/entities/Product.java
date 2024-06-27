@@ -47,9 +47,4 @@ public class Product {
         @JoinColumn(name = "composition_id")
         private Composition composition;
 
-        @ManyToOne(cascade = CascadeType.PERSIST)
-        @JoinColumn(name = "order_id")
-        private Order order;
-
-
 }
